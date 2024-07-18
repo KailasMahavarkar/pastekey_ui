@@ -9,9 +9,12 @@ import customToast from "@/toast";
 import { encryptAES } from "@/utils/crypto";
 import PasteContext from "@/context/paste.context";
 import { style } from "@/forms/paste.create.form";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/configureStore";
 
 const PasteEditForm = () => {
-	const { currentHandler, current, data, tools } = useContext(PasteContext);
+	const { currentHandler, current, data } = useContext(PasteContext);
+    const ux = useSelector((state: RootState) => state.ux);
 	const router = useRouter();
 
 	const formSubmitHandler = async (e: any) => {
@@ -41,7 +44,7 @@ const PasteEditForm = () => {
 					data: encryptedData,
 					vct: vct,
 				},
-				tools: tools,
+				tools: ux
 			};
 
 			const updatedResult = await axios.patch("/paste", mydata);
