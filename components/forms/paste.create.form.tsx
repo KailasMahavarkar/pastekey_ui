@@ -133,7 +133,7 @@ const PasteCreateForm = () => {
                         ? data.pasteMap
                         : dataEncrypted,
                 expiry: current.expiry,
-                maxviews: current.maxviews,
+                maxViews: current.maxViews,
                 privacy: current.privacy,
                 eseed: eseed,
                 vseed: vseed,
@@ -268,7 +268,7 @@ const PasteCreateForm = () => {
                 {/* END: privacy */}
             </div>
 
-            {/* expiry and maxviews */}
+            {/* expiry and maxViews */}
             <div className={style.form_child}>
                 {/* START: Expiry */}
                 <div className={style.form_child_item}>
@@ -312,7 +312,7 @@ const PasteCreateForm = () => {
                 </div>
                 {/* END: Expiry */}
 
-                {/* START: Maxviews */}
+                {/* START: maxViews */}
                 <div className={style.form_child_item}>
                     <label className={style.form_child_item_label}>
                         <span className={style.form_child_item_label_span}>
@@ -327,17 +327,17 @@ const PasteCreateForm = () => {
                         placeholder="Type here"
                         onChange={(e) => {
                             currentHandler(
-                                "maxviews",
+                                "maxViews",
                                 Number(e.target.value || 1000)
                             );
                         }}
-                        value={current.maxviews}
-                        name="maxviews"
+                        value={current.maxViews}
+                        name="maxViews"
                         className={style.form_child_item_input}
                         max={1000000000}
                     ></input>
                 </div>
-                {/* END: Maxviews */}
+                {/* END: maxViews */}
             </div>
 
             {/* password and masterkey */}

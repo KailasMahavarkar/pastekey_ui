@@ -45,7 +45,7 @@ interface singlePasteMetaType {
 	updateAt: number;
 	expireAt: number;
 	privacy: "private" | "public" | "unlisted";
-	maxviews: number;
+	maxViews: number;
 	paidViewsCount: number;
 	paidViews: countryMapType;
 	totalViews: countryMapType;

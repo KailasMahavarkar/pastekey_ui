@@ -142,7 +142,7 @@ export interface currentPasteType {
     ect: string;
     vct: string;
     tag: string;
-    maxviews: number;
+    maxViews: number;
     formMode: formModeType;
     eseed: string;
     vseed: string;
@@ -159,7 +159,7 @@ export interface pasteFormType {
     datasize: number;
     tag: string;
     data: pasteDataType;
-    maxviews: number;
+    maxViews: number;
 }
 
 export interface loginReducerType {

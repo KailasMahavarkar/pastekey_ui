@@ -19,7 +19,7 @@ export const defaultCurrentPaste = {
 	vct: "",
 	ect: "",
 	available: true,
-	maxviews: 10000,
+	maxViews: 10000,
 	formMode: "create" as formModeType,
 	settings: {
 		lineNumber: false,

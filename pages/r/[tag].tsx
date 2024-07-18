@@ -46,7 +46,6 @@ const Paste: NextPage = () => {
 
     const unlockPasteHandler = async () => {
         const passwordHash = sha512(current.password).toString();
-
         const result = decryptAES(current.vct, passwordHash);
 
         if (result !== -1) {
@@ -149,7 +148,45 @@ const Paste: NextPage = () => {
             }
 
             if (error.response.status === 403) {
+                // check if message if of max views reached
+                if (error.response.data?.msg === 'Max views reached') {
+                    customToast({
+                        message: `Paste ${tag} has expired by MaxView`,
+                        timer: 3000,
+                        icon: "error",
+                    }, () => {
+                        customToast({
+                            message: "Redirecting to home page",
+                            timer: 2000,
+                            icon: "info",
+                        }, () => {
+                            router.push("/");
+                        })
+                    });
+
+                    return;
+                }
+
+                if (error.response.data?.msg === 'Paste expired') {
+                    customToast({
+                        message: `Paste ${tag} has expired by time`,
+                        timer: 3000,
+                        icon: "error",
+                    }, () => {
+                        customToast({
+                            message: "Redirecting to home page",
+                            timer: 2000,
+                            icon: "info",
+                        }, () => {
+                            router.push("/");
+                        })
+                    });
+
+                    return;
+                }
+
                 const meta = error.response.data.meta;
+
 
                 setCurrent({
                     ...current,
@@ -193,7 +230,7 @@ const Paste: NextPage = () => {
 
             ect: pasteData.ect,
             vct: pasteData.vct,
-            maxviews: pasteData.maxviews,
+            maxViews: pasteData.maxViews,
             eseed: pasteData.eseed,
             vseed: pasteData.vseed,
         });

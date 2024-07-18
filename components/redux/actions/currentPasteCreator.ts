@@ -76,9 +76,9 @@ export const setCurrentMasterkey = (masterkey: string) => {
 	};
 };
 
-export const setCurrentMaxviews = (maxviews: number) => ({
+export const setCurrentmaxViews = (maxViews: number) => ({
 	type: ActionTypes.SET_CURRENT_PASTE_MAXVIEWS,
-	payload: maxviews,
+	payload: maxViews,
 });
 
 export const setCurrentPrivacy = (privacy: string) => ({

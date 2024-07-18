@@ -15,7 +15,7 @@ export const currentPasteTypeDefault: currentPasteType = {
 	ect: "",
 	vct: "",
 	tag: "",
-	maxviews: 10000,
+	maxViews: 10000,
 	formMode: "read",
 	eseed: "",
 	vseed: "",
