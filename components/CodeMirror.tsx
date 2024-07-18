@@ -36,7 +36,7 @@ const CodeMirror = (props: codeMirrorProps) => {
                 highlightSpecialChars: false,
                 foldGutter: false,
                 closeBrackets: true,
-                tabSize: ux.tabsize || 4,
+                tabSize: ux.tabSize || 4,
                 highlightActiveLine: true,
                 highlightSelectionMatches: false,
             }}
@@ -50,7 +50,7 @@ const CodeMirror = (props: codeMirrorProps) => {
                     : [EditorView.lineWrapping]
             }
             minHeight="calc(100vh - 200px)"
-            theme={theme === "light" ? Eclipse : "dark"}
+            theme={theme === "light" ? Eclipse : "dark" as any}
             value={data}
             onChange={(value: any) => {
                 textChangeHandler(value);
