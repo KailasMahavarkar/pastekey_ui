@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// @import url("https://fonts.googleapis.com/css2?family=Roboto");
+#__next {
+	height: 100% !important;
+	width: 100% !important;
+}
+
+html,
+body {
+	font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+		Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	padding-right: 0 !important;
+}
+
+#nav {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+}
+
+html,
+body {
+	// padding: 0;
+	// margin: 0;
+	scroll-behavior: smooth;
+}
+
+// ----------------------------------------
+// --------------- PASTE ------------------
+// ----------------------------------------
+
+::-webkit-scrollbar {
+	width: 16px;
+	cursor: pointer;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	@apply bg-base-200;
+	cursor: pointer;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	@apply border-[1px] bg-zinc-400 rounded-[4px];
+	cursor: pointer;
+}
+
+a {
+	color: inherit;
+	text-decoration: none !important;
+}
+
+// * {
+// 	box-sizing: border-box;
+// 	margin: 0;
+// 	padding: 0;
+// }
+
+// ul {
+// 	list-style-type: none;
+// 	margin: 0;
+// 	padding: 0;
+// }
+
+// select::-ms-expand {
+// 	border-radius: 5% !important;
+// 	display: none !important;
+// }
+
+// option {
+// 	padding: 10px !important;
+// }
+
+textarea {
+	width: 100%;
+	height: 100%;
+
+	// border: 1px solid #ddd;
+	// border-radius: 3px;
+	// -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+	// box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+	// -webkit-box-sizing: border-box;
+	// box-sizing: border-box;
+	display: block;
+	font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
+		monospace, serif;
+	min-height: 200px;
+	line-height: 21px;
+	width: 100%;
+	margin: 0;
+	padding: 8px 12px;
+	overflow-wrap: break-word;
+	height: 300px;
+	tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	-webkit-tab-size: 4;
+}
+
+.rounded-left {
+	border-radius: 30px 0 0 30px !important;
+}
+
+.rounded-right {
+	border-radius: 0 30px 30px 0 !important;
+}
+
+.test {
+	border: 2px solid violet;
+}
+
+.test2 {
+	border: 2px solid green;
+}
+
+.swal2-popup {
+	border-radius: 10px !important;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+	display: none;
+}
+.custom-file-input::before {
+	content: "Select some files";
+	display: inline-block;
+	background-color: transparent;
+	border: 1px solid #999;
+	border-radius: 3px;
+	padding: 5px 8px;
+	outline: none;
+	white-space: nowrap;
+	cursor: pointer;
+	text-shadow: 1px 1px #fff;
+	font-weight: 700;
+	font-size: 10pt;
+
+	&:hover {
+		background-color: #105a80;
+	}
+}
+
+.cm-editor.cm-focused {
+	outline: none !important;
+}
+
+.cm-editor {
+	background-color: transparent !important;
+}
+
+// .cm-gutters {
+// 	background-color: transparent !important;
+// }
+
+code {
+	font-weight: normal;
+	@apply bg-violet-100 rounded-md w-full;
+}
+
+.spinner {
+	animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes dash {
+	0% {
+		stroke-dasharray: 1, 150;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 90, 150;
+		stroke-dashoffset: -35;
+	}
+	100% {
+		stroke-dasharray: 90, 150;
+		stroke-dashoffset: -124;
+	}
+}
+
+.underline {
+	text-decoration: solid !important;
+}
+
+.swal2-shown .swal2-height-auto {
+	padding-right: 0 !important;
+}
+
+.cm-activeLine .cm-line {
+	padding-left: 10px !important;
+}

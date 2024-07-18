@@ -1,0 +1,52 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"incremental": true,
+		"baseUrl": "./",
+		"paths": {
+			"@/components/*": ["./components/*"],
+			"@/layout/*": ["./layout/*"],
+			"@/blocks/*": ["./components/blocks/*"],
+			"@/context/*": ["./components/context/*"],
+			"@/data/*": ["./components/data/*"],
+			"@/forms/*": ["./components/forms/*"],
+			"@/pages/*": ["./pages/*"],
+			"@/styles/*": ["./styles/*"],
+			"@/utils/*": ["./utils/*"],
+			"@/hooks/*": ["./hooks/*"],
+			"@/assets/*": ["./public/assets/*"],
+			"@/svg/*": ["./public/svg/*"],
+			"@/service/*": ["./service/*"],
+			"@/redux/*": ["./components/redux/*"],
+			"@/*": ["./*"]
+		},
+		"plugins": [
+			{
+				"name": "next"
+			}
+		]
+	},
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.mdx",
+		"app/blog/blog.layout.js",
+		"pages/data-handling.mdx",
+		"pages/data-handling.mdx",
+		".next/types/**/*.ts"
+, "env.ts", "env.ts", "next-sitemap.config.js", "next-sitemap.config.js"	],
+	"exclude": ["node_modules"]
+}
