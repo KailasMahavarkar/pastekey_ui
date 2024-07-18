@@ -10,7 +10,6 @@ import { NextPage } from "next";
 import { useTheme } from "next-themes";
 import { env } from "@/env";
 import { useContext, useEffect } from "react";
-import CustomContext from "./context/custom.context";
 import PasteContext from "./context/paste.context";
 import { defaultCurrentPaste, defaultCurrentPasteData } from "./defaults";
 
@@ -19,7 +18,6 @@ const Header: NextPage<any> = () => {
     const {
         setData, setCurrent,
         textChangeHandler, setFormMode,
-        setTools
     } = useContext(PasteContext)
 
     useEffect(() => {

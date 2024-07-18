@@ -6,7 +6,6 @@ import {
 	currentPasteType,
 	formModeType,
 	pasteDataType,
-	toolType,
 } from "@/types";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/main.scss";
@@ -21,14 +20,12 @@ import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import PasteContext, {
-	pasteDefaultTools,
-} from "@/components/context/paste.context";
 import {
 	defaultCurrentPaste,
 	defaultCurrentPasteData,
 } from "@/components/defaults";
 import produce from "immer";
+import PasteContext from "@/components/context/paste.context";
 let persistor = persistStore(store);
 
 axios.defaults.baseURL = env.SERVER_URL;
@@ -38,8 +35,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 	const [current, setCurrent] =
 		useState<currentPasteType>(defaultCurrentPaste);
 	const [data, setData] = useState<pasteDataType>(defaultCurrentPasteData);
-	const [tools, setTools] = useState<toolType>(pasteDefaultTools);
-
 	const [unlocked, setUnlocked] = useState<boolean>(true);
 	const [editMode, setEditMode] = useState<boolean>(false);
 
@@ -94,8 +89,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 							data,
 							setData,
 							textChangeHandler,
-							tools,
-							setTools,
 							formMode,
 							setFormMode,
 							unlocked,

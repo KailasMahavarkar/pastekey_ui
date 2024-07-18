@@ -13,7 +13,6 @@ interface Ipayment {
 	selected: "paypal" | "upi";
 }
 
-type prepareAutoBatched = <T>(payload: T) => { payload: T; meta: unknown };
 
 interface Isocial {
 	facebook: string;

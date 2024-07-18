@@ -217,8 +217,6 @@ export interface pasteContextType {
     data: pasteDataType;
     setData: (data: pasteDataType) => void;
     textChangeHandler: (data: string) => void;
-    // tools: toolType;
-    // setTools: (tools: toolType) => void;
     formMode: formModeType;
     setFormMode: (mode: formModeType) => void;
 
