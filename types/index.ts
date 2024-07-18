@@ -207,7 +207,7 @@ export type toolType = {
     fontsize: number;
     language: LangListType;
     showLines: boolean;
-    tabsize: 2 | 4;
+    tabSize: 2 | 4;
 };
 
 export interface pasteContextType {
