@@ -1,63 +1,34 @@
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# PasteKey - Secure and Private Paste Service (UI)
+## Getting Started
 
-PasteKey is a secure and private paste service that allows you to store and share text online. It is built using Node.js, Express.js, MongoDB, and Redis.
+First, run the development server:
 
-## Features
-
-- Code Sharing (Public and Private)
-- Syntax highlighting (10+ languages)
-- AES-256 Encryption
-- View-based expiration
-- Time-based expiration
-- Dark mode
-
-## License
-
-Read The License [Here](https://github.com/KailasMahavarkar/pastekey_ui/blob/main/LICENSE)
-
-We are using the MIT license with Commons Clause Restriction, meaning you can use this project for free, but you can't sell it or use it commercially.
-
-# Installation
-
-## Prerequisites
-
-- Node.js (v16+)
-- MongoDB 
-- Redis
-- Pastekey API server configured and running [here](https://github.com/KailasMahavarkar/pastekey_api.git)
-
-## Setup
-
-1. Clone the repository
-    
-    ```bash
-    https://github.com/KailasMahavarkar/pastekey_ui.git
-    ```
-
-2. Install dependencies
-
-    ```bash
-    npm install
-    ```
-
-3. Create a `.env` file in the root directory and add the environment variables
-
-4. Start the dev server
-
-    ```bash
-    npm run dev
-    ```
-
-
-## Environment Variables
-
-```txt
-NEXT_PUBLIC_MODE=DEV
-NEXT_PUBLIC_LOCAL_SERVER_URL=http://localhost:2000
-NEXT_PUBLIC_SERVER_URL=your-server-url
-NEXT_PUBLIC_GA_TRACKING_ID=UA-XXXXXXXXX-X
-NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-XXXXXXXXXXXXXXXX
-NEXT_PUBLIC_MAINTAINANCE=false
-
+```bash
+npm run dev
+# or
+yarn dev
 ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
