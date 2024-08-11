@@ -16,6 +16,7 @@
 		"incremental": true,
 		"baseUrl": "./",
 		"paths": {
+            "@/library/*": ["./components/library/*"],
 			"@/components/*": ["./components/*"],
 			"@/layout/*": ["./layout/*"],
 			"@/blocks/*": ["./components/blocks/*"],
@@ -30,6 +31,7 @@
 			"@/svg/*": ["./public/svg/*"],
 			"@/service/*": ["./service/*"],
 			"@/redux/*": ["./components/redux/*"],
+            "@/types/*": ["./types/*"],
 			"@/*": ["./*"]
 		},
 		"plugins": [

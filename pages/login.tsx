@@ -15,6 +15,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import PasswordResetMailForm from "@/forms/PasswordResetMailForm";
 import PasswordContext, { stepFormType } from "@/context/password.context";
+import Button from "@/components/Button";
 
 const LoginForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -139,12 +140,13 @@ const LoginForm = () => {
 					</label>
 				</div>
 				<div className="form-control mt-2">
-					<button
+					<Button
 						className="btn btn-primary"
 						onClick={handleSubmit(onSubmit)}
+                        accessibleName="Login"
 					>
 						Login
-					</button>
+					</Button>
 				</div>
 			</div>
 		</>

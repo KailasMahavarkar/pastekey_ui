@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import AlertBox from "@/components/AlertBox";
+import Button from "@/components/Button";
 
 const PasswordResetForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -114,12 +115,13 @@ const PasswordResetForm = () => {
 					</label>
 				</div>
 				<div className="form-control mt-2">
-					<button
+					<Button
 						className="btn btn-primary"
 						onClick={handleSubmit(onSubmit)}
+                        accessibleName="Change Password"
 					>
 						Change Password
-					</button>
+					</Button>
 				</div>
 			</div>
 		</>
