@@ -1,3 +1,5 @@
+/* eslint @typescript-eslint/no-unused-vars: 0 */
+/* eslint @typescript-eslint/no-empty-function: 0 */
 import { pasteDataTypeDefault } from "./../../types/default";
 import {
     currentPasteType,
@@ -8,30 +10,29 @@ import { createContext } from "react";
 import { pasteContextType } from "../../types";
 import { currentPasteTypeDefault } from "../../types/default";
 
-
 const PasteContext = createContext<pasteContextType>({
     current: currentPasteTypeDefault,
-    setCurrent: (paste: currentPasteType) => { },
+    setCurrent: (_paste: currentPasteType) => { },
 
     // handle current
-    currentHandler: (key: keyof currentPasteType, value: any) => { },
+    currentHandler: (_key: keyof currentPasteType, _value: any) => { },
 
     // handle data
     data: pasteDataTypeDefault,
-    setData: (data: pasteDataType) => { },
-    textChangeHandler: (data: string) => { },
+    setData: (_data: pasteDataType) => { },
+    textChangeHandler: (_data: string) => { },
 
     // handle form mode
     formMode: "create",
-    setFormMode: (mode: formModeType) => { },
+    setFormMode: (_mode: formModeType) => { },
 
     // unlocked
     unlocked: false,
-    setUnlocked: (unlocked: boolean) => { },
+    setUnlocked: (_unlocked: boolean) => { },
 
     // editMode
     editMode: false,
-    setEditMode: (editMode: boolean) => { },
+    setEditMode: (_editMode: boolean) => { },
 });
 
 export default PasteContext;

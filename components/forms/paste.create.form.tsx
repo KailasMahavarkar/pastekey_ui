@@ -100,7 +100,7 @@ const PasteCreateForm = () => {
             let vseed = "";
             let vct = "";
             let ect = "";
-            let dataEncrypted = [];
+            const dataEncrypted = [];
 
             const masterkeyHash = sha512(current.masterkey).toString();
             const passwordHash = sha512(current.password).toString();

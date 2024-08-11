@@ -50,10 +50,10 @@ const SocialForm = () => {
 
 			{/* facebook */}
 			<div className="form-control">
-				<label className="label">
-					<span className="label-text">Facebook</span>
-				</label>
-				<label className="input-group">
+				<div className="div">
+					<span className="div-text">Facebook</span>
+				</div>
+				<div className="input-group">
 					<span className=" bg-transparent">
 						<FontAwesomeIcon
 							icon={faFacebook as IconProp}
@@ -74,15 +74,15 @@ const SocialForm = () => {
 						}
 						value={social.facebook}
 					/>
-				</label>
+				</div>
 			</div>
 
 			{/* Instagram */}
 			<div className="form-control">
-				<label className="label">
-					<span className="label-text">Instagram</span>
-				</label>
-				<label className="input-group">
+				<div className="div">
+					<span className="div-text">Instagram</span>
+				</div>
+				<div className="input-group">
 					<span className="bg-transparent">
 						<FontAwesomeIcon
 							icon={faInstagram as IconProp}
@@ -103,15 +103,15 @@ const SocialForm = () => {
 							)
 						}
 					/>
-				</label>
+				</div>
 			</div>
 
 			{/* twitter */}
 			<div className="form-control">
-				<label className="label">
-					<span className="label-text">Twitter</span>
-				</label>
-				<label className="input-group">
+				<div className="div">
+					<span className="div-text">Twitter</span>
+				</div>
+				<div className="input-group">
 					<span className=" bg-transparent">
 						<FontAwesomeIcon
 							icon={faTwitter as IconProp}
@@ -132,7 +132,7 @@ const SocialForm = () => {
 							)
 						}
 					/>
-				</label>
+				</div>
 			</div>
 
 			{/* Button */}

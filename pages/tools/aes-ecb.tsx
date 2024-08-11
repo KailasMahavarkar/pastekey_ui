@@ -166,11 +166,11 @@ const AesECB = () => {
 				<div className="flex flex-col md:flex-row child:m-2 w-full">
 					<div className="flex flex-col child:m-2">
 						<div className="form-control">
-							<label className="label">
+							<div className="label">
 								<span className="label-text">
 									Enter Passphrase
 								</span>
-							</label>
+							</div>
 							<input
 								onChange={(e) => {
 									setOptions({
@@ -183,11 +183,11 @@ const AesECB = () => {
 							/>
 						</div>
 						<div className="form-control">
-							<label className="label">
+							<div className="label">
 								<span className="label-text">
 									Select Encryption Mode
 								</span>
-							</label>
+							</div>
 							<select
 								className="input input-bordered w-full max-w-xs"
 								onChange={(e) => {
@@ -208,11 +208,11 @@ const AesECB = () => {
 
 					<div className="flex flex-col child:m-2">
 						<div className="form-control">
-							<label className="label">
+							<div className="label">
 								<span className="label-text">
 									Enter IV (optional)
 								</span>
-							</label>
+							</div>
 							<input
 								type="text"
 								onChange={(e) => {
@@ -227,11 +227,11 @@ const AesECB = () => {
 							/>
 						</div>
 						<div className="form-control">
-							<label className="label">
+							<div className="label">
 								<span className="label-text">
 									Ecrypt / Decrypt
 								</span>
-							</label>
+							</div>
 							<select
 								className="input input-bordered w-full max-w-xs"
 								onChange={(e) => {

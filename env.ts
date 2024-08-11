@@ -1,5 +1,5 @@
-export const MODE = process.env.NEXT_PUBLIC_MODE || "DEV";
-export function withMode(dev: any, prod: any): string {
+const MODE = process.env.NEXT_PUBLIC_MODE || "DEV";
+function withMode(dev: any, prod: any): string {
 	if (MODE === "DEV") {
 		return dev;
 	}

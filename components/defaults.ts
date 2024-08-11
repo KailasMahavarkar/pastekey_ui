@@ -1,5 +1,5 @@
 import { timeAt, timeSpanType } from "../timing";
-import { pastePrivacyType, pasteCategoryType, formModeType } from "../types";
+import { pastePrivacyType, pasteCategoryType, formModeType, LangListType } from "../types";
 
 export const defaultCurrentPaste = {
 	title: "",
@@ -26,6 +26,7 @@ export const defaultCurrentPaste = {
 		lineWrapping: false,
 		language: "python",
 	},
+    language: "python" as LangListType,
 };
 
 export const defaultCurrentPasteData = {

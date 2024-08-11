@@ -2,10 +2,9 @@ import axios from "axios";
 import { env } from "@/env";
 import { parseJwt } from "@/helper";
 import customToast from "@/toast";
-// import store from '@/store';
 
 
-export const api = axios.create({
+const api = axios.create({
     baseURL: env.SERVER_URL
 })
 
@@ -17,26 +16,26 @@ const getTokens = () => {
 }
 
 
-export const refreshAccessToken = async () => {
+const refreshAccessToken = async () => {
     // const user = store.state.user;
 
-    const { accessToken, refreshToken } = getTokens();
+    const { accessToken } = getTokens();
 
     const result = await api.post('/auth/refresh', {
         token: accessToken
     })
 
     if (result.status === 200) {
-        const newAccessToken = result.data.data.accessToken;
+        // const newAccessToken = result.data.data.accessToken;
 
         // decode token
-        const decodedToken = parseJwt(newAccessToken);
+        // const decodedToken = parseJwt(newAccessToken);
 
-        const newUserData = {
-            accessToken: newAccessToken,
-            refreshToken: refreshToken,
-            ...decodedToken
-        }
+        // const newUserData = {
+        //     accessToken: newAccessToken,
+        //     refreshToken: refreshToken,
+        //     ...decodedToken
+        // }
         // set data to store
         // store.commit('setUser', newUserData);
 
@@ -67,7 +66,7 @@ export const refreshAccessToken = async () => {
     }
 }
 
-export const resetSession = () => {
+const resetSession = () => {
     // set authenicated to false
     // store.commit('setAuthentication', false);
 

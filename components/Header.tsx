@@ -25,16 +25,6 @@ const Header: NextPage<any> = () => {
         setTheme(localTheme);
     }, [setTheme]);
 
-    const navMap = [
-        {
-            name: "New Paste",
-            url: "/",
-        },
-        {
-            name: "Online Tools",
-            url: "/tools",
-        },
-    ];
 
     const themeChangeHandler = () => {
         const newTheme = theme === "light" ? "dark" : "light";

@@ -26,7 +26,7 @@ import {
 } from "@/components/defaults";
 import produce from "immer";
 import PasteContext from "@/components/context/paste.context";
-let persistor = persistStore(store);
+const persistor = persistStore(store);
 
 axios.defaults.baseURL = env.SERVER_URL;
 

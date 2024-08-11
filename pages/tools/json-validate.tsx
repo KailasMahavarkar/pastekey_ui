@@ -120,8 +120,8 @@ const JSONValidate = () => {
 					<div className="flex child:m-2">
 						<button
 							className="btn btn-outline mt-2"
-							onClick={() => {
-								const jsonLinter = require("jsonlint-mod");
+							onClick={async () => {
+								const jsonLinter = await require("jsonlint-mod");
 								try {
 									jsonLinter.parse(text);
 									setJSONResult("valid");

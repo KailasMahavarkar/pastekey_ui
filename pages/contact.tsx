@@ -55,7 +55,7 @@ const PasteContactForm = () => {
 
 				{/* name */}
 				<div className="form-control">
-					<label className="label">
+					<label htmlFor="name" className="label">
 						<span className="label-text">Name</span>
 					</label>
 					<label className="input-group">

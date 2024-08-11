@@ -15,7 +15,7 @@ interface AlertBoxProps {
 }
 
 const AlertBox = (props: AlertBoxProps) => {
-	let icon = props.icon || "info";
+	const icon = props.icon || "info";
 
 	const iconMap = {
 		success: faCheck,
@@ -31,7 +31,7 @@ const AlertBox = (props: AlertBoxProps) => {
 		warning: "alert-warning",
 	};
 
-	let classNames = `alert shadow-xl mx-5 w-auto ${alertColorMap[icon]}`;
+	const classNames = `alert shadow-xl mx-5 w-auto ${alertColorMap[icon]}`;
 
 	const finalClassName = classNames + " " + props.className;
 

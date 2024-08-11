@@ -49,7 +49,6 @@ export const {
     updateLanguage,
     updateShowLines,
     updateCodeMode,
-    updateTabSize,
 } = uxSlice.actions;
 
 // export all actions

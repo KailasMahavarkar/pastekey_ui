@@ -1,4 +1,3 @@
-import { githubLight } from "@uiw/codemirror-theme-github";
 import { useTheme } from "next-themes";
 import CodeMirrorComponent from "@uiw/react-codemirror";
 import { EditorView } from "@codemirror/view";
@@ -43,6 +42,8 @@ const CodeMirror = (props: codeMirrorProps) => {
             readOnly={readOnly || false}
             indentWithTab={true}
             suppressHydrationWarning={true}
+
+            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={true}
             extensions={
                 ux.codeMode

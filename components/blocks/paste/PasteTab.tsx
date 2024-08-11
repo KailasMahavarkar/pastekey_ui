@@ -119,7 +119,8 @@ const PasteTab = () => {
                             const tabSlice = data?.pasteMap[index]?.slice(0, 8);
                             return (
                                 <div key={index}>
-                                    <a
+                                    {/* eslint jsx-a11y/no-static-element-interactions: 0 */}
+                                    <div
                                         key={index}
                                         className={
                                             `tab tab-lifted ` +
@@ -160,7 +161,7 @@ const PasteTab = () => {
                                                 />
                                             </button>
                                         )}
-                                    </a>
+                                    </div>
                                     {index + 1 === data?.tabcount &&
                                         data?.tabcount <
                                         settings.MAX_TABS_ALLOWED && (

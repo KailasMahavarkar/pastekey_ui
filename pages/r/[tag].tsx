@@ -284,12 +284,12 @@ const Paste: NextPage = () => {
 
                     <div className="flex flex-col items-center justify-center ">
                         <div className="form-control">
-                            <label className="label">
+                            <div className="label">
                                 <span className="label-text">
                                     Enter Password
                                 </span>
-                            </label>
-                            <label className="input-group">
+                            </div>
+                            <div className="input-group">
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     className="input input-bordered"
@@ -314,7 +314,7 @@ const Paste: NextPage = () => {
                                         icon={faEye}
                                     />
                                 </button>
-                            </label>
+                            </div>
                         </div>
 
                         <div className="form-control w-full mt-3">
@@ -334,7 +334,7 @@ const Paste: NextPage = () => {
             {!editMode && current.privacy === "private" && unlocked && (
                 <div className="my-10">
                     <div className="flex m-2">
-                        <label>Do you have master password?</label>
+                        <div>Do you have master password?</div>
                         <label className="input-group input-group-lg ">
                             <input
                                 type={showMasterkey ? "text" : "password"}

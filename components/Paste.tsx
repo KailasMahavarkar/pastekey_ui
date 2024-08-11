@@ -6,8 +6,6 @@ import PasteContext from "@/context/paste.context";
 
 import PasteCreateForm from "@/forms/paste.create.form";
 import CodeMirror from "./CodeMirror";
-import { useSelector } from "react-redux";
-import { RootState } from "./redux/configureStore";
 
 const Paste: NextPage = () => {
     const { data, textChangeHandler } = useContext(PasteContext);
