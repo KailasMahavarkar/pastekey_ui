@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faSun,
     faMoon,
+    faBarsStaggered 
 } from "@fortawesome/free-solid-svg-icons";
 import { NextPage } from "next";
 import { useTheme } from "next-themes";
@@ -44,40 +45,40 @@ const Header: NextPage<any> = () => {
     return (
         <div className="navbar bg-base-100 shadow-md rounded-md mb-5 px-5">
             <div className="navbar-start ">
-                {/* <div className="dropdown ">
-					<label
-						tabIndex={0}
-						className="btn btn-ghost btn-circle avatar"
-					>
-						<div className="flex ">
-							<FontAwesomeIcon
-								icon={faBarsStaggered}
-								className="swap-on w-7 h-7 "
-							/>
-						</div>
-					</label>
-					 <ul
-						tabIndex={0}
-						className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-					>
-						<li>
-							<Link href="/dashboard/settings">Settings</Link>
-						</li>
-						<li>
-							<Link href="/dashboard/manage">Manage Paste</Link>
-						</li>
-						<li>
-							<Link href="/login" passHref={true}>
-								Login
-							</Link>
-						</li>
-						<li>
-							<Link href="/register" passHref={true}>
-								Register
-							</Link>
-						</li>
-					</ul> 
-				</div> */}
+                <div className="dropdown ">
+                    <label
+                        tabIndex={0}
+                        className="btn btn-ghost btn-circle avatar"
+                    >
+                        <div className="flex ">
+                            <FontAwesomeIcon
+                                icon={faBarsStaggered }
+                                className="swap-on w-5 h-5 "
+                            />
+                        </div>
+                    </label>
+                    <ul
+                        tabIndex={0}
+                        className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                        <li>
+                            <Link href="/dashboard/settings">Settings</Link>
+                        </li>
+                        <li>
+                            <Link href="/dashboard/manage">Manage Paste</Link>
+                        </li>
+                        <li>
+                            <Link href="/login" passHref={true}>
+                                Login (coming soon)
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/register" passHref={true}>
+                                Register (coming soon)
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
 
                 <Link href="/" >
                     <h1 className="font-bold text-2xl hover:underline"

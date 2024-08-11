@@ -4,7 +4,6 @@ import { useContext, useState } from "react";
 import { pasteDataType } from "@/types";
 
 // codemirror
-import CodeMirror from "@/components/CodeMirror";
 import PasteInfo from "@/components/blocks/paste/PasteInfo";
 import PasteTab from "@/components/blocks/paste/PasteTab";
 import {
@@ -22,6 +21,11 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { decryptAES } from "@/utils/crypto";
 import { sha512 } from "js-sha512";
 import PasteEditForm from "@/components/forms/paste.edit.form";
+import CodeBox from "@/components/library/CodeBox";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/configureStore";
+import Button from "@/components/Button";
+
 
 const Paste: NextPage = () => {
     const router = useRouter();
@@ -43,6 +47,8 @@ const Paste: NextPage = () => {
 
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [showMasterkey, setShowMasterkey] = useState<boolean>(false);
+
+    const ux = useSelector((state: RootState) => state.ux);
 
     const unlockPasteHandler = async () => {
         const passwordHash = sha512(current.password).toString();
@@ -260,10 +266,15 @@ const Paste: NextPage = () => {
                     <PasteTab />
                     <PasteInfo />
 
-                    <CodeMirror
+                    <CodeBox
                         data={data?.pasteMap[data?.active]}
                         textChangeHandler={textChangeHandler}
                         readOnly={!editMode}
+                        basicSetup={{
+                            lineNumbers: true,
+                        }}
+                        codeMode={true}
+                        className='bg-red-500'
                     />
                 </>
             )}
@@ -300,11 +311,12 @@ const Paste: NextPage = () => {
                                         });
                                     }}
                                 />
-                                <button
+                                <Button
                                     className="btn"
                                     onClick={() => {
                                         setShowPassword(!showPassword);
                                     }}
+                                    accessibleName="show password"
                                 >
                                     <FontAwesomeIcon
                                         className={
@@ -313,19 +325,20 @@ const Paste: NextPage = () => {
                                         }
                                         icon={faEye}
                                     />
-                                </button>
+                                </Button>
                             </label>
                         </div>
 
                         <div className="form-control w-full mt-3">
-                            <button
+                            <Button
                                 className="btn btn-primary w-full"
                                 onClick={() => {
                                     unlockPasteHandler();
                                 }}
+                                accessibleName="unlock paste"
                             >
                                 Unlock Paste
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -361,12 +374,13 @@ const Paste: NextPage = () => {
                                 />
                             </button>
 
-                            <button
+                            <Button
                                 className="btn btn-primary"
                                 onClick={unlockEditModeHandler}
+                                accessibleName="Unlock"
                             >
                                 Unlock
-                            </button>
+                            </Button>
                         </label>
                     </div>
                 </div>

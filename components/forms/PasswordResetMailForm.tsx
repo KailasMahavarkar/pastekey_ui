@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import AlertBox from "@/components/AlertBox";
 import PasswordContext from "@/context/password.context";
+import Button from "../Button";
 
 const PasswordResetMailForm = () => {
 	const { setStep } = useContext(PasswordContext);
@@ -84,13 +85,14 @@ const PasswordResetMailForm = () => {
 					/>
 				</div>
 				<div className="form-control mt-2">
-					<button
+					<Button
 						type="submit"
 						className="btn btn-primary"
 						value="submit"
+                        accessibleName="Send Recovery Email"
 					>
 						Send Recovery Email
-					</button>
+					</Button>
 				</div>
 				<div
 					className="text-center text-sm text-primary cursor-pointer mt-2"

@@ -3,6 +3,7 @@ import crypto from "crypto-es";
 
 import { copyHandlerRaw } from "@/helper";
 import customToast from "@/toast";
+import Button from "@/components/Button";
 const ToolInfo = () => {
 	return (
 		<div className=" ml-5 max-w-screen-lg">
@@ -95,7 +96,7 @@ const AesECB = () => {
 				{/* NON-ENCRYPTED ZONE */}
 				<div className="flex w-full flex-col ">
 					<div className="flex justify-between w-full ">
-						<button
+						<Button
 							className="btn btn-primary btn-sm rounded-b-none"
 							onClick={() => {
 								copyHandlerRaw(encyptedText);
@@ -104,10 +105,11 @@ const AesECB = () => {
 									icon: "success",
 								});
 							}}
+                            accessibleName="copy"
 						>
 							{size} kb
-						</button>
-						<button
+						</Button>
+						<Button
 							className="btn btn-primary btn-sm rounded-b-none"
 							onClick={() => {
 								copyHandlerRaw(encyptedText);
@@ -116,9 +118,10 @@ const AesECB = () => {
 									icon: "success",
 								});
 							}}
+                            accessibleName="copy"
 						>
 							copy
-						</button>
+						</Button>
 					</div>
 					<textarea
 						onChange={encryptAES}
@@ -130,7 +133,7 @@ const AesECB = () => {
 				{/* ENCRYPTED ZONE */}
 				<div className="flex w-full flex-col ">
 					<div className="flex justify-between w-full ">
-						<button
+						<Button
 							className="btn btn-primary btn-sm rounded-b-none"
 							onClick={() => {
 								copyHandlerRaw(encyptedText);
@@ -139,10 +142,11 @@ const AesECB = () => {
 									icon: "success",
 								});
 							}}
+                            accessibleName="copy"
 						>
 							{size !== 0 ? `${encryptedSize} kb` : "0 kb"}
-						</button>
-						<button
+						</Button>
+						<Button
 							className="btn btn-primary btn-sm rounded-b-none"
 							onClick={() => {
 								copyHandlerRaw(encyptedText);
@@ -151,9 +155,10 @@ const AesECB = () => {
 									icon: "success",
 								});
 							}}
+                            accessibleName="copy"
 						>
 							copy
-						</button>
+						</Button>
 					</div>
 					<textarea
 						value={size !== 0 ? encyptedText : "View Results"}
