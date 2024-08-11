@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faSun,
     faMoon,
-    faBarsStaggered 
+    faBarsStaggered
 } from "@fortawesome/free-solid-svg-icons";
 import { NextPage } from "next";
 import { useTheme } from "next-themes";
@@ -42,7 +42,7 @@ const Header: NextPage<any> = () => {
                     >
                         <div className="flex ">
                             <FontAwesomeIcon
-                                icon={faBarsStaggered }
+                                icon={faBarsStaggered}
                                 className="swap-on w-5 h-5 "
                             />
                         </div>

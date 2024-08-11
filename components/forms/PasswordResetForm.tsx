@@ -1,11 +1,9 @@
 import { handleCustomError } from "@/helper";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter } from "next/router";
 import { env } from "process";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
 import AlertBox from "@/components/AlertBox";
 import Button from "@/components/Button";
 
@@ -13,8 +11,6 @@ const PasswordResetForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-	const user = useSelector((state: any) => state.user);
-	const router = useRouter();
 
 	const {
 		register,
@@ -31,7 +27,7 @@ const PasswordResetForm = () => {
 		(key: string) => (errors as any)[key].message as string
 	);
 
-	const onSubmit = async (formData: any) => {
+	const onSubmit = async () => {
 		try {
 			// const result = await userAPI.login({
 			// 	username: formData.username,

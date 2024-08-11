@@ -120,7 +120,6 @@ const PasteTab = () => {
                             const tabSlice = data?.pasteMap[index]?.slice(0, 8);
                             return (
                                 <div key={index}>
-                                    {/* eslint jsx-a11y/no-static-element-interactions: 0 */}
                                     <div
                                         key={index}
                                         className={

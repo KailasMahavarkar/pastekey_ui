@@ -46,8 +46,6 @@ const CodeMirror = (props: codeMirrorProps) => {
             readOnly={readOnly || false}
             indentWithTab={true}
             suppressHydrationWarning={true}
-
-            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={true}
             extensions={
                 ux.codeMode

@@ -22,8 +22,7 @@ import { decryptAES } from "@/utils/crypto";
 import { sha512 } from "js-sha512";
 import PasteEditForm from "@/components/forms/paste.edit.form";
 import CodeBox from "@/components/library/CodeBox";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/configureStore";
+import { useDispatch } from "react-redux";
 import Button from "@/components/Button";
 import { updateLanguage } from "@/components/redux/services/uxService";
 
@@ -49,8 +48,6 @@ const Paste: NextPage = () => {
 
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [showMasterkey, setShowMasterkey] = useState<boolean>(false);
-
-    const ux = useSelector((state: RootState) => state.ux);
 
     const unlockPasteHandler = async () => {
         const passwordHash = sha512(current.password).toString();

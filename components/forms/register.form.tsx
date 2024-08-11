@@ -170,7 +170,7 @@ function RegisterForm() {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                             message: "invalid email address",
                         },
-                        onChange: (e: any) => {
+                        onChange: () => {
                             setServerError({
                                 ...serverError,
                                 email_exists: false,
@@ -197,7 +197,7 @@ function RegisterForm() {
                             message: "invalid username type",
                         },
 
-                        onChange: (e: any) => {
+                        onChange: () => {
                             setServerError({
                                 ...serverError,
                                 user_exists: false,

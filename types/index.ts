@@ -1,8 +1,6 @@
-import { javascript } from "@codemirror/lang-javascript";
 import { timeSpanType } from "@/timing";
 import type { NextRouter } from "next/router";
 import { AxiosResponse } from "axios";
-import { LanguageName } from "@uiw/codemirror-extensions-langs";
 
 export const LangList = {
     javascript: "javascript",
