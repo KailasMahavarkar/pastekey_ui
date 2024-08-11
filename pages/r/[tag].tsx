@@ -22,9 +22,10 @@ import { decryptAES } from "@/utils/crypto";
 import { sha512 } from "js-sha512";
 import PasteEditForm from "@/components/forms/paste.edit.form";
 import CodeBox from "@/components/library/CodeBox";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "@/components/Button";
 import { updateLanguage } from "@/components/redux/services/uxService";
+import { RootState } from "@/components/redux/configureStore";
 
 
 const Paste: NextPage = () => {
@@ -48,6 +49,7 @@ const Paste: NextPage = () => {
 
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [showMasterkey, setShowMasterkey] = useState<boolean>(false);
+    const ux = useSelector((state: RootState) => state.ux);
 
     const unlockPasteHandler = async () => {
         const passwordHash = sha512(current.password).toString();
@@ -275,9 +277,9 @@ const Paste: NextPage = () => {
                         language={current.language}
                         readOnly={!editMode}
                         basicSetup={{
-                            lineNumbers: true,
+                            lineNumbers: current.category === 'programming' || ux.showLines
                         }}
-                        codeMode={true}
+                        codeMode={current.category === 'programming'}
                         className='bg-red-500'
                     />
                 </>

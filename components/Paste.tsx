@@ -17,9 +17,11 @@ const Paste: NextPage = () => {
     return (
         <div id="paste">
             <PasteTab />
-            <PasteInfo />
+            <PasteInfo
+                showCodeMode
+            />
 
-             <CodeBox
+            <CodeBox
                 data={data?.pasteMap[data?.active] || ''}
                 textChangeHandler={textChangeHandler}
                 readOnly={false}
@@ -29,7 +31,7 @@ const Paste: NextPage = () => {
                 basicSetup={{
                     lineNumbers: ux.showLines
                 }}
-            /> 
+            />
 
             <PasteCreateForm />
         </div>

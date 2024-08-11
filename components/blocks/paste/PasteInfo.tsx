@@ -40,7 +40,11 @@ const copyPasteTag = (tag: string) => {
     }
 };
 
-const PasteInfo = () => {
+const PasteInfo = ({
+    showCodeMode = false
+}: {
+    showCodeMode?: boolean;
+}) => {
     const { current, data, currentHandler } = useContext(PasteContext);
     const router = useRouter();
     const dispatch = useDispatch();
@@ -158,28 +162,33 @@ const PasteInfo = () => {
                         </Button>
                     </div>
 
-                    <Button
-                        className={`btn btn-sm btn-square btn-circle md:btn-n ${ux.codeMode ? "btn-primary" : ""
-                            }`}
-                        onClick={() => {
-                            dispatch(updateCodeMode(!ux.codeMode))
+                    {
+                        showCodeMode && (
+                            <Button
+                                className={`btn btn-sm btn-square btn-circle md:btn-n ${ux.codeMode ? "btn-primary" : ""
+                                    }`}
+                                onClick={() => {
+                                    dispatch(updateCodeMode(!ux.codeMode))
 
-                            if (ux.codeMode) {
-                                currentHandler("category", "general");
-                            } else {
-                                currentHandler("category", "programming");
-                            }
+                                    if (ux.codeMode) {
+                                        currentHandler("category", "general");
+                                    } else {
+                                        currentHandler("category", "programming");
+                                    }
 
-                            customToast({
-                                message: `codemode is ${!ux.codeMode ? "on" : "off"
-                                    }`,
-                                icon: "info",
-                            });
-                        }}
-                        accessibleName="code mode"
-                    >
-                        <FontAwesomeIcon icon={faCode} />
-                    </Button>
+                                    customToast({
+                                        message: `codemode is ${!ux.codeMode ? "on" : "off"
+                                            }`,
+                                        icon: "info",
+                                    });
+                                }}
+                                accessibleName="code mode"
+                            >
+                                <FontAwesomeIcon icon={faCode} />
+                            </Button>
+                        )
+                    }
+
 
                     {/* show lines if codemode is on */}
                     {!ux.codeMode && (
@@ -200,7 +209,7 @@ const PasteInfo = () => {
                         </Button>
                     )}
 
-                    {ux.codeMode && (
+                    {showCodeMode && ux.codeMode && (
                         <select
                             value={ux.language}
                             className="select select-sm select-bordered max-w-xs"
