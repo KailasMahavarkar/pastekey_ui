@@ -22,13 +22,15 @@ import { decryptAES } from "@/utils/crypto";
 import { sha512 } from "js-sha512";
 import PasteEditForm from "@/components/forms/paste.edit.form";
 import CodeBox from "@/components/library/CodeBox";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/configureStore";
 import Button from "@/components/Button";
+import { updateLanguage } from "@/components/redux/services/uxService";
 
 
 const Paste: NextPage = () => {
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const {
         current,
@@ -212,7 +214,6 @@ const Paste: NextPage = () => {
             }
         }
 
-        console.log("result", result);
 
         const pasteData: any = result.data?.data;
         if (!pasteData) return;
@@ -233,13 +234,18 @@ const Paste: NextPage = () => {
             privacy: pasteData.privacy,
             masterkey: pasteData.masterkey,
             password: pasteData.password,
-
+            language: pasteData.language,
             ect: pasteData.ect,
             vct: pasteData.vct,
             maxViews: pasteData.maxViews,
             eseed: pasteData.eseed,
             vseed: pasteData.vseed,
         });
+
+        // update language data
+        dispatch(
+            updateLanguage(pasteData.language)
+        )
 
         const myData = produce(data, (draft: pasteDataType) => {
             draft.pasteMap = pasteData.data;
@@ -269,6 +275,7 @@ const Paste: NextPage = () => {
                     <CodeBox
                         data={data?.pasteMap[data?.active]}
                         textChangeHandler={textChangeHandler}
+                        language={current.language}
                         readOnly={!editMode}
                         basicSetup={{
                             lineNumbers: true,
