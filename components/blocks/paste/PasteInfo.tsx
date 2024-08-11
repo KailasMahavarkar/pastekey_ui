@@ -16,6 +16,7 @@ import { LangList } from "@/types";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateCodeMode, updateFontSize, updateLanguage, updateShowLines } from "@/components/redux/services/uxService";
 import { RootState } from "@/components/redux/configureStore";
+import Button from "@/components/Button";
 
 const copyPasteTag = (tag: string) => {
     if (typeof tag === "string") {
@@ -40,7 +41,7 @@ const copyPasteTag = (tag: string) => {
 };
 
 const PasteInfo = () => {
-    const { current, data } = useContext(PasteContext);
+    const { current, data, currentHandler } = useContext(PasteContext);
     const router = useRouter();
     const dispatch = useDispatch();
     const ux = useSelector((state: RootState) => state.ux);
@@ -119,57 +120,70 @@ const PasteInfo = () => {
                         <span className="px-2">
                             {computed.tag().toLocaleLowerCase()}{" "}
                         </span>
-                        <button
+                        <Button
                             className="btn btn-xs dark:text-primary py-1 px-2 rounded-full"
                             onClick={() => {
                                 copyPasteTag(router.query?.tag as string);
                             }}
+                            accessibleName="copy tag"
                         >
                             <FontAwesomeIcon icon={faCopy} />
-                        </button>
+                        </Button>
                     </div>
                 </div>
 
                 <div className="inline-flex  gap-1 flex-wrap items-center justify-end">
                     {/* tools */}
                     <div className="btn-group">
-                        <button
+                        <Button
                             className="tooltip btn btn-sm btn-square btn-circle rounded-left"
                             data-tip="decrease font"
                             onClick={() => decrementFontSize()}
+                            accessibleName="decrease font"
                         >
                             <FontAwesomeIcon icon={faSubtract} />
-                        </button>
-                        <button className="btn btn-sm btn-square btn-circle ">
+                        </Button>
+                        <Button
+                            accessibleName="font size"
+                            className="btn btn-sm btn-square btn-circle ">
                             {ux.fontsize}
-                        </button>
-                        <button
+                        </Button>
+                        <Button
                             className="tooltip btn btn-sm btn-square btn-circle rounded-right"
                             data-tip="increase font"
                             onClick={() => incrementFontSize()}
+                            accessibleName="increase font"
                         >
                             <FontAwesomeIcon icon={faAdd} />
-                        </button>
+                        </Button>
                     </div>
 
-                    <button
+                    <Button
                         className={`btn btn-sm btn-square btn-circle md:btn-n ${ux.codeMode ? "btn-primary" : ""
                             }`}
                         onClick={() => {
                             dispatch(updateCodeMode(!ux.codeMode))
+
+                            if (ux.codeMode) {
+                                currentHandler("category", "general");
+                            } else {
+                                currentHandler("category", "programming");
+                            }
+
                             customToast({
                                 message: `codemode is ${!ux.codeMode ? "on" : "off"
                                     }`,
                                 icon: "info",
                             });
                         }}
+                        accessibleName="code mode"
                     >
                         <FontAwesomeIcon icon={faCode} />
-                    </button>
+                    </Button>
 
                     {/* show lines if codemode is on */}
                     {!ux.codeMode && (
-                        <button
+                        <Button
                             className={`btn btn-sm btn-square btn-circle md:btn-n ${ux.showLines ? "btn-primary" : ""
                                 }`}
                             onClick={() => {
@@ -180,13 +194,15 @@ const PasteInfo = () => {
                                     icon: "info",
                                 });
                             }}
+                            accessibleName="show lines"
                         >
                             <FontAwesomeIcon icon={faListOl} />
-                        </button>
+                        </Button>
                     )}
 
                     {ux.codeMode && (
                         <select
+                            value={ux.language}
                             className="select select-sm select-bordered max-w-xs"
                             defaultValue={ux.language}
                             onChange={(e) => {
@@ -203,7 +219,7 @@ const PasteInfo = () => {
                         </select>
                     )}
 
-                    <button
+                    <Button
                         className="btn btn-sm btn-circle btn-primary"
                         onClick={() => {
                             copyHandlerRaw(data?.pasteMap[data?.active]);
@@ -219,9 +235,10 @@ const PasteInfo = () => {
                                 });
                             }
                         }}
+                        accessibleName="copy tab"
                     >
                         <FontAwesomeIcon icon={faCopy} />
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>

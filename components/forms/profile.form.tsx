@@ -5,6 +5,7 @@ import { countries } from "@/data/country";
 import { RootState } from "@/redux/configureStore";
 import { userActions } from "@/redux/services/userService";
 import axios from "@/service/axios.service";
+import Button from "../Button";
 
 // profile form
 const ProfileForm = () => {
@@ -134,12 +135,13 @@ const ProfileForm = () => {
 
 			{/* Button */}
 			<div className="form-control">
-				<button
+				<Button
 					className="btn btn-outline mt-4"
 					onClick={formSubmitHandler}
+                    accessibleName="Update profile"
 				>
 					Update profile
-				</button>
+				</Button>
 			</div>
 		</>
 	);

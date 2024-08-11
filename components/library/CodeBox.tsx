@@ -1,12 +1,15 @@
 import { useTheme } from "next-themes";
 import CodeMirrorComponent from "@uiw/react-codemirror";
+import type { BasicSetupOptions } from "@uiw/react-codemirror"
 import { EditorView } from "@codemirror/view";
 import { loadLanguage } from "@uiw/codemirror-extensions-langs";
-import { useSelector } from "react-redux";
-import { RootState } from "./redux/configureStore";
 import Eclipse from '@uiw/codemirror-theme-eclipse';
-import { LangListType } from "@/types";
+import { LangListType } from "@/types"
+import React from "react";
 
+declare type Extension = {
+    extension: Extension;
+} | readonly Extension[];
 
 type codeMirrorProps = {
     data: string;
@@ -14,44 +17,47 @@ type codeMirrorProps = {
     textChangeHandler: (value: string) => void;
     className?: string;
     language?: LangListType;
+
+    basicSetup?: BasicSetupOptions,
+    extensions?: Extension[] | undefined,
+    otherProps?: any,
+    codeMode?: boolean,
+    hasRoundedBorder?: boolean,
 }
 
+const classes = {
+    codemirror: `shadow text-[16px] bg-transparent border-[1px] p-3 rounded-b-md rounded-tr-md min-h-[calc(100vh_-_200px)]`
+}
 
-const CodeMirror = (props: codeMirrorProps) => {
-    const { data, readOnly, textChangeHandler, className } = props;
+const CodeBox: React.FC<codeMirrorProps> = (props) => {
+    const { data, readOnly, textChangeHandler, className, language, basicSetup, codeMode, otherProps } = props;
     const { theme } = useTheme();
-    const ux = useSelector((state: RootState) => state.ux);
 
     return (
         <CodeMirrorComponent
-            className={`shadow
-			text-[16px] 
-			bg-transparent  border-[1px] p-3 rounded-b-md rounded-tr-md min-h-[calc(100vh_-_200px)]
-            ${className}
-            `}
+            className={`${classes.codemirror} ${className}`}
             style={{
                 outline: "none",
             }}
             basicSetup={{
-                lineNumbers: ux.showLines,
+                lineNumbers: true,
                 autocompletion: true,
                 highlightActiveLineGutter: false,
                 highlightSpecialChars: false,
                 foldGutter: false,
                 closeBrackets: true,
-                tabSize: ux.tabSize || 4,
+                tabSize: 4,
                 highlightActiveLine: true,
                 highlightSelectionMatches: false,
+                ...basicSetup
             }}
             readOnly={readOnly || false}
             indentWithTab={true}
             suppressHydrationWarning={true}
-
-            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={true}
             extensions={
-                ux.codeMode
-                    ? [loadLanguage(ux.language) as any]
+                codeMode
+                    ? [loadLanguage(language as any) as any]
                     : [EditorView.lineWrapping]
             }
             minHeight="calc(100vh - 200px)"
@@ -60,8 +66,9 @@ const CodeMirror = (props: codeMirrorProps) => {
             onChange={(value: any) => {
                 textChangeHandler(value);
             }}
+            {...otherProps}
         />
     );
 };
 
-export default CodeMirror;
+export default CodeBox;

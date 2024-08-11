@@ -1,8 +1,8 @@
+import { javascript } from "@codemirror/lang-javascript";
 import { timeSpanType } from "@/timing";
 import type { NextRouter } from "next/router";
 import { AxiosResponse } from "axios";
-
-export type callbackFunctionType = (...args: any[]) => void;
+import { LanguageName } from "@uiw/codemirror-extensions-langs";
 
 export const LangList = {
     javascript: "javascript",
@@ -21,12 +21,40 @@ export const LangList = {
 // extract types from LangList
 export type LangListType = keyof typeof LangList;
 
+// reducer types
+export type pasteReducerType = {
+    store: currentPasteType[];
+    size: number;
+    sizeEncrypted: number;
+};
 
 export type iRouter = NextRouter & {
     components?: any;
 };
 
+export type modalType = {
+    view: boolean;
+    edit: boolean;
+    unlock: boolean;
+    tabdelete: boolean;
+    data: any;
+};
 
+export interface customDataContextType {
+    data: pasteDataType;
+    size: number;
+    setData: (data: pasteDataType) => void;
+    setActive: (active: number) => void;
+    clearData: () => void;
+}
+
+export interface customContextType {
+    width: number;
+    formMode: formModeType;
+    setFormMode: (mode: formModeType) => void;
+    theme: string;
+    setTheme: (theme: string) => void;
+}
 
 export interface tailcss {
     // sm
@@ -53,6 +81,15 @@ export type Mapper<T, V> = {
     [key in keyof T]: V;
 };
 
+export type Map<T> = {
+    [key in keyof T]: T[key];
+};
+
+export type MakeLastType<T, Z> = {
+    [A in keyof T]: {
+        [B in keyof T[A]]: Z;
+    };
+};
 
 export type LeafsToGeneric<T, E> = T extends string | number | boolean
     ? E // If primitive transform to number
@@ -62,6 +99,9 @@ export type LeafsToGeneric<T, E> = T extends string | number | boolean
         : LeafsToGeneric<T[P], E>;
     }; // Otherwise recursively map, with a special case for arrays.
 
+export type SkipFirstDepth<T extends Record<string, any>> = {
+    [K in keyof T]: T[K] extends Record<string, infer Item> ? Item : T[K];
+};
 
 export type pastePrivacyType = "public" | "private" | "unlisted";
 export type pasteCategoryType =
@@ -106,11 +146,33 @@ export interface currentPasteType {
     formMode: formModeType;
     eseed: string;
     vseed: string;
+    language: LangListType;
 }
 
+export interface pasteFormType {
+    title: string;
+    expiry: timeSpanType;
+    masterkey: string;
+    password: string;
+    privacy: pastePrivacyType;
+    showPassword: boolean;
+    showMasterkey: boolean;
+    datasize: number;
+    tag: string;
+    data: pasteDataType;
+    maxViews: number;
+    language: LangListType;
+}
 
+export interface loginReducerType {
+    isLoading: boolean;
+    errMess: any;
+    user: any;
+    balance: object;
+    paste: object;
+}
 
-interface commonResponseType {
+export interface commonResponseType {
     msg: string;
     status?: "exited" | "success" | "failed" | "unauthorized" | "overflow";
     error?: {
@@ -129,8 +191,26 @@ export interface cres extends AxiosResponse {
     data: commonResponseType;
 }
 
+export type reduxType = {
+    pastes: pasteReducerType;
+    current: currentPasteType;
+    login: loginReducerType;
+};
 
+export type localType = {
+    paste: {
+        fontsize: "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl";
+    };
+};
 
+export type toolType = {
+    highlight: boolean;
+    codeMode: boolean;
+    fontsize: number;
+    language: LangListType;
+    showLines: boolean;
+    tabSize: 2 | 4;
+};
 
 export interface pasteContextType {
     current: currentPasteType;
