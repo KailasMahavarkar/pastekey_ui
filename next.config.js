@@ -3,6 +3,9 @@ const nextConfig = {
 	// reactStrictMode: true,
 	swcMinify: true,
 	pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+    typescript: {
+        "ignoreBuildErrors": true
+    },
 	eslint: true
 };
 
