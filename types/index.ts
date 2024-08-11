@@ -146,6 +146,7 @@ export interface currentPasteType {
     formMode: formModeType;
     eseed: string;
     vseed: string;
+    language: LangListType;
 }
 
 export interface pasteFormType {
@@ -160,6 +161,7 @@ export interface pasteFormType {
     tag: string;
     data: pasteDataType;
     maxViews: number;
+    language: LangListType;
 }
 
 export interface loginReducerType {

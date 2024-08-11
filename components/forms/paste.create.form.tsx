@@ -10,8 +10,10 @@ import { timeArray } from "@/timing";
 import customToast from "@/toast";
 import { encryptAES } from "@/utils/crypto";
 import PasteContext from "@/context/paste.context";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/configureStore";
+import { LangList, LangListType } from "@/types/index";
+import { updateCodeMode, updateLanguage } from "../redux/services/uxService";
 
 const style_paste = {
     feature: {
@@ -50,6 +52,7 @@ export const style = tail(style_paste);
 
 const PasteCreateForm = () => {
     const { current, currentHandler, data } = useContext(PasteContext);
+    const dispatch = useDispatch();
     const ux = useSelector((state: RootState) => state.ux);
     const privacyRef = useRef<HTMLInputElement>(null);
     const router = useRouter();
@@ -200,9 +203,15 @@ const PasteCreateForm = () => {
                     </label>
 
                     <select
+                        value={current.category}
                         className={style.form_child_item_select}
                         name="category"
                         onChange={(e) => {
+
+                            if (e.target.value === "programming") {
+                                dispatch(updateCodeMode(true))
+                            }
+
                             currentHandler("category", e.target.value);
                         }}
                         defaultValue={current.category}
@@ -215,6 +224,79 @@ const PasteCreateForm = () => {
                 </div>
                 {/* END: Category */}
             </div>
+
+            {/* programming language */}
+            {
+                current.category === 'programming' ? (<div className={style.form_child}>
+                    {/* START: tag */}
+                    <div className={style.form_child_item}>
+                        <label className={style.form_child_item_label}>
+                            <span className={style.form_child_item_label_span}>
+                                Programming Language
+                            </span>
+                        </label>
+
+                        <select
+                            className={style.form_child_item_select}
+                            name="language"
+                            value={ux.language}
+                            onChange={(e) => {
+                                const langName = e.target.value.toLowerCase();
+                                dispatch(
+                                    updateLanguage(
+                                        langName as LangListType
+                                    )
+                                )
+                            }}
+                            defaultValue={ux.language || "javascript"}
+                        >
+                            {
+                                Object.keys(LangList).map((lang, index) => {
+                                    return (
+                                        <option value={lang.toLowerCase()} key={index}>
+                                            {lang}
+                                        </option>
+                                    )
+                                })
+                            }
+
+                        </select>
+                    </div>
+                    {/* END: tag */}
+
+                    {/* START: Category */}
+                    {/* <div className={style.form_child_item}>
+                        <label className={style.form_child_item_label}>
+                            <span className={style.form_child_item_label_span}>
+                                Syntax Highlighting For User ()
+                            </span>
+                            <span
+                                className={style.form_child_item_label_span_alt}
+                            ></span>
+                        </label>
+
+                        <select
+                            value={current.category}
+                            className={style.form_child_item_select}
+                            name="category"
+                            onChange={(e) => {
+                                currentHandler("category", e.target.value);
+                            }}
+                            defaultValue={current.category}
+                        >
+                            <option value="general">general</option>
+                            <option value="programming">programming</option>
+                            <option value="key:value">key:value</option>
+                            <option value="others">others</option>
+                        </select>
+                    </div> */}
+                    {/* END: Category */}
+                </div>) : (<>
+
+                </>)
+            }
+
+
             {/* title and privacy */}
             <div className={style.form_child}>
                 {/* START: Title */}

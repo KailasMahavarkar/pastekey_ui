@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setPayment } from "@/redux/actions/paymentCreator";
 import { RootState } from "@/redux/configureStore";
 import { updatePayment } from "@/redux/services/userService";
+import Button from "../Button";
 
 // social form
 const PastePaymentForm = () => {
@@ -164,12 +165,13 @@ const PastePaymentForm = () => {
 
 			{/* Button */}
 			<div className="form-control">
-				<button
+				<Button
 					className="btn btn-outline mt-4"
 					onClick={formSubmitHandler}
+                    accessibleName="Update Payment"
 				>
 					Update Payment
-				</button>
+				</Button>
 			</div>
 		</>
 	);

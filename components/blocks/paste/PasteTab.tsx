@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { settings } from "@/env";
 import { pasteDataType } from "@/types";
 import PasteContext from "@/context/paste.context";
+import Button from "@/components/Button";
 
 const PasteTab = () => {
     const { theme } = useTheme();
@@ -144,7 +145,7 @@ const PasteTab = () => {
                                             : tabSlice}
 
                                         {data.tabcount > 1 && (
-                                            <button
+                                            <Button
                                                 className="btn btn-ghost btn-square btn-xs"
                                                 onClick={() => {
                                                     if (formMode !== "read") {
@@ -153,30 +154,32 @@ const PasteTab = () => {
                                                         );
                                                     }
                                                 }}
+                                                accessibleName="delete tab"
                                             >
                                                 <FontAwesomeIcon
                                                     icon={faTimes as IconProp}
                                                     name="delete"
                                                 />
-                                            </button>
+                                            </Button>
                                         )}
                                     </a>
                                     {index + 1 === data?.tabcount &&
                                         data?.tabcount <
                                         settings.MAX_TABS_ALLOWED && (
-                                            <button
+                                            <Button
                                                 key={index + 1000}
                                                 className="btn btn-primary btn-circle btn-sm mx-2"
                                                 onClick={() => {
                                                     manageTab.setTab();
                                                 }}
                                                 disabled={formMode === "read"}
+                                                accessibleName="add tab"
                                             >
                                                 <FontAwesomeIcon
                                                     icon={faAdd as IconProp}
                                                     name="add"
                                                 />
-                                            </button>
+                                            </Button>
                                         )}
                                 </div>
                             );

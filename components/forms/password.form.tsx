@@ -6,6 +6,7 @@ import { useState } from "react";
 import { handleNetworkError } from "@/helper";
 import axios from "@/service/axios.service";
 import customToast from "@/toast";
+import Button from "../Button";
 
 const PasswordForm = () => {
 	const [pass, setPassword] = useState({
@@ -160,7 +161,7 @@ const PasswordForm = () => {
 
 			{/* Button */}
 			<div className="form-control flex">
-				<button
+				<Button
 					className="btn btn-outline placeholder:btn-primary mt-4"
 					onClick={formSubmitHandler}
 					onKeyPress={(e) => {
@@ -168,9 +169,10 @@ const PasswordForm = () => {
 							formSubmitHandler(e);
 						}
 					}}
+                    accessibleName="Apply changes"
 				>
 					Apply changes
-				</button>
+				</Button>
 			</div>
 		</>
 	);
