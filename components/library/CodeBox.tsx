@@ -3,6 +3,7 @@ import CodeMirrorComponent from "@uiw/react-codemirror";
 import type { BasicSetupOptions } from "@uiw/react-codemirror"
 import { EditorView } from "@codemirror/view";
 import { loadLanguage } from "@uiw/codemirror-extensions-langs";
+import { mapLanguage } from "@/utils/language";
 import Eclipse from '@uiw/codemirror-theme-eclipse';
 import { LangListType } from "@/types"
 import React from "react";
@@ -57,7 +58,7 @@ const CodeBox: React.FC<codeMirrorProps> = (props) => {
             autoFocus={true}
             extensions={
                 codeMode
-                    ? [loadLanguage(language as any) as any]
+                    ? [loadLanguage(mapLanguage(language as any)) as any]
                     : [EditorView.lineWrapping]
             }
             minHeight="calc(100vh - 200px)"
