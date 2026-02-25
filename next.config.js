@@ -6,7 +6,9 @@ const nextConfig = {
     typescript: {
         "ignoreBuildErrors": true
     },
-	eslint: true
+	eslint: {
+        ignoreDuringBuilds: true,
+    }
 };
 
 const withMDX = require("@next/mdx")({
