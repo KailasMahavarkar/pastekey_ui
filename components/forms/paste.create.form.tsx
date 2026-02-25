@@ -138,6 +138,8 @@ const PasteCreateForm = () => {
                 expiry: current.expiry,
                 maxViews: current.maxViews,
                 privacy: current.privacy,
+                category: current.category,
+                language: ux.language,
                 eseed: eseed,
                 vseed: vseed,
                 vct: vct,
