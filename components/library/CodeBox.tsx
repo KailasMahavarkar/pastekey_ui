@@ -3,7 +3,8 @@ import CodeMirrorComponent from "@uiw/react-codemirror";
 import type { BasicSetupOptions } from "@uiw/react-codemirror"
 import { EditorView } from "@codemirror/view";
 import { loadLanguage } from "@uiw/codemirror-extensions-langs";
-import Eclipse from '@uiw/codemirror-theme-eclipse';
+import { mapLanguage } from "@/utils/language";
+import { eclipse } from '@uiw/codemirror-theme-eclipse';
 import { LangListType } from "@/types"
 import React from "react";
 
@@ -57,11 +58,11 @@ const CodeBox: React.FC<codeMirrorProps> = (props) => {
             autoFocus={true}
             extensions={
                 codeMode
-                    ? [loadLanguage(language as any) as any]
+                    ? [loadLanguage(mapLanguage(language as any)) as any]
                     : [EditorView.lineWrapping]
             }
             minHeight="calc(100vh - 200px)"
-            theme={theme === "light" ? Eclipse : "dark" as any}
+            theme={theme === "light" ? eclipse : "dark" as any}
             value={data}
             onChange={(value: any) => {
                 textChangeHandler(value);

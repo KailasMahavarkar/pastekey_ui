@@ -2,9 +2,10 @@ import { useTheme } from "next-themes";
 import CodeMirrorComponent from "@uiw/react-codemirror";
 import { EditorView } from "@codemirror/view";
 import { loadLanguage } from "@uiw/codemirror-extensions-langs";
+import { mapLanguage } from "@/utils/language";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/configureStore";
-import Eclipse from '@uiw/codemirror-theme-eclipse';
+import { eclipse } from '@uiw/codemirror-theme-eclipse';
 import { LangListType } from "@/types";
 
 
@@ -49,11 +50,11 @@ const CodeMirror = (props: codeMirrorProps) => {
             autoFocus={true}
             extensions={
                 ux.codeMode
-                    ? [loadLanguage(ux.language) as any]
+                    ? [loadLanguage(mapLanguage(ux.language)) as any]
                     : [EditorView.lineWrapping]
             }
             minHeight="calc(100vh - 200px)"
-            theme={theme === "light" ? Eclipse : "dark" as any}
+            theme={theme === "light" ? eclipse : "dark" as any}
             value={data}
             onChange={(value: any) => {
                 textChangeHandler(value);

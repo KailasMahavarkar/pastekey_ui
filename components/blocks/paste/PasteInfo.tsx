@@ -168,16 +168,17 @@ const PasteInfo = ({
                                 className={`btn btn-sm btn-square btn-circle md:btn-n ${ux.codeMode ? "btn-primary" : ""
                                     }`}
                                 onClick={() => {
-                                    dispatch(updateCodeMode(!ux.codeMode))
+                                    const nextCodeMode = !ux.codeMode;
+                                    dispatch(updateCodeMode(nextCodeMode))
 
-                                    if (ux.codeMode) {
-                                        currentHandler("category", "general");
-                                    } else {
+                                    if (nextCodeMode) {
                                         currentHandler("category", "programming");
+                                    } else {
+                                        currentHandler("category", "general");
                                     }
 
                                     customToast({
-                                        message: `codemode is ${!ux.codeMode ? "on" : "off"
+                                        message: `codemode is ${nextCodeMode ? "on" : "off"
                                             }`,
                                         icon: "info",
                                     });
