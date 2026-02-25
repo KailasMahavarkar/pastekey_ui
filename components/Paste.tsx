@@ -7,7 +7,16 @@ import PasteContext from "@/context/paste.context";
 import PasteCreateForm from "@/forms/paste.create.form";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/configureStore";
-import CodeBox from "@/library/CodeBox";
+import dynamic from "next/dynamic";
+
+const CodeBox = dynamic(() => import("@/library/CodeBox"), {
+    ssr: false,
+    loading: () => (
+        <div className="shadow text-[16px] bg-transparent border-[1px] p-3 rounded-b-md rounded-tr-md min-h-[calc(100vh_-_200px)] flex items-center justify-center">
+            Loading Editor...
+        </div>
+    ),
+});
 
 const Paste: NextPage = () => {
     const { data, textChangeHandler } = useContext(PasteContext);
