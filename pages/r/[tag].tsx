@@ -21,11 +21,20 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { decryptAES } from "@/utils/crypto";
 import { sha512 } from "js-sha512";
 import PasteEditForm from "@/components/forms/paste.edit.form";
-import CodeBox from "@/components/library/CodeBox";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@/components/Button";
 import { updateLanguage } from "@/components/redux/services/uxService";
 import { RootState } from "@/components/redux/configureStore";
+import dynamic from "next/dynamic";
+
+const CodeBox = dynamic(() => import("@/components/library/CodeBox"), {
+    ssr: false,
+    loading: () => (
+        <div className="shadow text-[16px] bg-transparent border-[1px] p-3 rounded-b-md rounded-tr-md min-h-[calc(100vh_-_200px)] flex items-center justify-center">
+            Loading Editor...
+        </div>
+    ),
+});
 
 
 const Paste: NextPage = () => {

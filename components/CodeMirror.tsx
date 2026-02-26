@@ -4,7 +4,7 @@ import { EditorView } from "@codemirror/view";
 import { loadLanguage } from "@uiw/codemirror-extensions-langs";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/configureStore";
-import Eclipse from '@uiw/codemirror-theme-eclipse';
+import { eclipse } from '@uiw/codemirror-theme-eclipse';
 import { LangListType } from "@/types";
 
 
@@ -53,7 +53,7 @@ const CodeMirror = (props: codeMirrorProps) => {
                     : [EditorView.lineWrapping]
             }
             minHeight="calc(100vh - 200px)"
-            theme={theme === "light" ? Eclipse : "dark" as any}
+            theme={theme === "light" ? eclipse : "dark" as any}
             value={data}
             onChange={(value: any) => {
                 textChangeHandler(value);
