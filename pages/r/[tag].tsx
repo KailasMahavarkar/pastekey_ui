@@ -75,11 +75,14 @@ const Paste: NextPage = () => {
                         return decryptAES(tab, passwordHash);
                     });
 
+                    let totalSize = 0;
                     draft.pasteMapSize = draft.pasteMap.map((tab: string) => {
-                        return tab.length / 1024;
+                        const size = tab.length / 1024;
+                        totalSize += size;
+                        return size;
                     });
 
-                    draft.size = draft.pasteMapSize.reduce((a, b) => a + b, 0);
+                    draft.size = totalSize;
 
                     draft.active = 0;
                     draft.tabcount = draft.pasteMap.length;
@@ -250,11 +253,14 @@ const Paste: NextPage = () => {
             draft.pasteMap = pasteData.data;
             draft.encryptedPasteMap = [];
             draft.encryptedPasteMapSize = [];
+            let totalSize = 0;
             draft.pasteMapSize = draft.pasteMap.map((tab: string) => {
-                return tab.length / 1024;
+                const size = tab.length / 1024;
+                totalSize += size;
+                return size;
             });
 
-            draft.size = draft.pasteMapSize.reduce((a, b) => a + b, 0);
+            draft.size = totalSize;
             draft.tabcount = pasteData.data?.length || 0;
             draft.active = 0;
         });
