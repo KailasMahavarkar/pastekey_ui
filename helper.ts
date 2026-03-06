@@ -101,17 +101,11 @@ export function isNetworkError(err: any) {
 
 
 const clover = (prefix: string, str = "") => {
-	let result = "";
-
-	const propMap = str.split(" ");
-
-	// loop through each property
-	for (let i = 0; i < propMap.length; i++) {
-		if (propMap[i].startsWith(prefix)) {
-			result += propMap[i] + " ";
-		}
-	}
-	return result.trim();
+	if (!str) return "";
+	return str
+		.split(" ")
+		.filter((s) => s.startsWith(prefix))
+		.join(" ");
 };
 
 
