@@ -3,7 +3,7 @@ import CodeMirrorComponent from "@uiw/react-codemirror";
 import type { BasicSetupOptions } from "@uiw/react-codemirror"
 import { EditorView } from "@codemirror/view";
 import { loadLanguage } from "@uiw/codemirror-extensions-langs";
-import Eclipse from '@uiw/codemirror-theme-eclipse';
+import { eclipse as Eclipse } from '@uiw/codemirror-theme-eclipse';
 import { LangListType } from "@/types"
 import React from "react";
 
