@@ -61,10 +61,9 @@ const PasteCreateForm = () => {
         // loop through tag values
 
         const validChars = [];
+        const charset =
+            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWZYX1234567890";
         for (let i = 0; i < e.target.value.length; i++) {
-            const charset =
-                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWZYX1234567890";
-
             if (charset.includes(e.target.value[i])) {
                 validChars.push(e.target.value[i]);
             }
